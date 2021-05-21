@@ -1,0 +1,22 @@
+{
+  "name": "matias-dart",
+  "version": "1.0.0",
+  "description": "Dart语言学习、使用",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matiastang/matias-Dart.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matiastang/matias-Dart/issues"
+  },
+  "homepage": "https://github.com/matiastang/matias-Dart#readme",
+  "devDependencies": {
+    "matias-vuepress-cli": "^1.0.2"
+  }
+}
