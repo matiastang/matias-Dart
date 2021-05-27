@@ -2,12 +2,67 @@
  * @Author: tangdaoyong
  * @Date: 2021-05-21 11:54:30
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2021-05-21 11:59:44
+ * @LastEditTime: 2021-05-27 16:03:03
  * @Description: Dart异步编程
 -->
 # Dart异步编程
 
 [Dart异步编程：Isolate和事件循环](https://melrose1994.com/index.php/2020/04/14/dart%e5%bc%82%e6%ad%a5%e7%bc%96%e7%a8%8b%ef%bc%9aisolate%e5%92%8c%e4%ba%8b%e4%bb%b6%e5%be%aa%e7%8e%af/)
+[stream](https://www.dartcn.com/guides/libraries/library-tour#stream)
+[future](https://www.dartcn.com/guides/libraries/library-tour#future)
+
+## 介绍
+
+异步编程通常使用回调方法来实现，但是 Dart 提供了其他方案：Future 和 Stream 对象。 Future 类似与 JavaScript 中的 Promise ， 代表在将来某个时刻会返回一个结果。 Stream 类可以用来获取一系列的值，比如，一些列事件。
+
+ 从 Dart 2.1 开始，使用 Future 和 Stream 不需要导入 dart:async ， 因为 dart:core 库 export 了这些类。
+## Future
+
+`then().catchError()` 组合是 `try-catch` 的异步版本。
+### then()
+
+### catchError()
+
+### wait()
+
+等待它们全部完成后再继续执行。 使用 `Future.wait()` 静态方法管理多个 `Future` 以及等待它们完成：
+
+
+### await async
+
+## Stream
+
+在 Dart API 中 Stream 对象随处可见，Stream 用来表示一些列数据。 例如，HTML 中的按钮点击就是通过 stream 传递的。 同样也可以将文件作为数据流来读取。
+### 监听流数据
+
+如果只关心其中一个事件，可以使用，例如，first， last，或 single 属性来获取。 要在处理时间前对事件进行测试，可以使用，例如 firstWhere()， lastWhere()， 或 singleWhere() 方法。
+
+如果只关心事件中的一个子集，可以使用，例如，skip()， skipWhile()，take()，takeWhile()， 和 where()。
+
+#### listen()
+
+####  await for
+
+### 传递流数据
+
+#### transform() 
+
+生成具有不同类型数据的流
+
+### 处理错误和完成
+
+处理错误和完成代码方式， 取决于使用的是 异步 for 循环（await for）还是 Stream API 。
+
+* 如果使用的是异步 for 循环， 那么通过 try-catch 来处理错误。 代码位于异步 for 循环之后， 会在 stream 被关闭后执行。
+* 如果使用的是 Stream API， 那么通过注册 onError 监听来处理错误。 代码位于注册的 onDone 中， 会在 stream 被关闭后执行。
+
+## Isolates
+大多数计算机中，甚至在移动平台上，都在使用多核CPU。 为了有效利用多核性能，开发者一般使用共享内存数据来保证多线程的正确执行。 然而， 多线程共享数据通常会导致很多潜在的问题，并导致代码运行出错。
+
+所有 Dart 代码都在隔离区（ isolates ）内运行，而不是线程。 每个隔离区都有自己的内存堆，确保每个隔离区的状态都不会被其他隔离区访问。
+
+有关更多信息，请参考 [dart:isolate library documentation](https://api.dartlang.org/stable/dart-isolate) 。
+## Isolate和事件循环
 
 尽管Dart是单线程语言，但它支持Future、Stream等其他内容。 本文介绍了Dart支持后台工作的基础：Isolate和事件循环。
 
@@ -16,7 +71,7 @@ Isolate
 
 ![dart线程](./images/dart线程.png)
 
-隔离区具有自己的内存和运行事件循环的单个执行线程
+隔离区具有自己的`内存`和`运行事件循环`的单个执行线程
 
 在许多其他语言（例如C ++）中，可以让多个线程共享同一内存并运行所需的任何代码。 但是，在Dart中，每个线程都与自己的内存处于隔离状态。
 

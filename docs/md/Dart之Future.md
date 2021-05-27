@@ -2,12 +2,13 @@
  * @Author: tangdaoyong
  * @Date: 2021-05-21 10:49:01
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2021-05-21 11:00:33
+ * @LastEditTime: 2021-05-27 14:03:16
  * @Description: Dart之Future
 -->
 # Dart之Future
 
 [Dart 单线程实现异步处理之 Future (一)](https://www.imooc.com/article/305495)
+[future](https://www.dartcn.com/guides/libraries/library-tour#future)
 
 ## 介绍
 
